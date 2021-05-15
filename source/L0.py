@@ -39,7 +39,7 @@ class L0:
             self.play_video = False
             return None
 
-    def update(self, surface: Surface) -> object:
+    def update(self, surface: Surface, keys, dir) -> object:
         self.time_count += 1
         # 播放视频
         if self.play_video:

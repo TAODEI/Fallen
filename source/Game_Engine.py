@@ -35,6 +35,8 @@ class GameEngine:
             # 调用floor刷新
             state = self.iter.update(self.surface, self.keys, keys_dir)
 
+
+
             # 刷新界面
             self.update()
 
