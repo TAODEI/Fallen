@@ -1,5 +1,4 @@
 import pygame
-import os
 from . import setup
 
 
@@ -19,6 +18,7 @@ class GameEngine:
         while True:
             # 检测是否点击关闭
             keys_dir = {}
+            keys_dir['x'], keys_dir['y'] = 0, 0
             for event in pygame.event.get():
                 # 点X
                 if event.type is pygame.QUIT or (event.type is pygame.KEYDOWN and event.key is pygame.K_q):
@@ -31,7 +31,11 @@ class GameEngine:
                     self.keys = pygame.key.get_pressed()
                 elif event.type is pygame.MOUSEBUTTONDOWN:
                     keys_dir['down'] = True
-                    keys_dir['x'], keys_dir['y'] = pygame.mouse.get_pos()
+                    keys_dir['x'], keys_dir['y'] = event.pos
+                elif event.type == pygame.MOUSEBUTTONUP:
+                    keys_dir['up'] = True
+                elif event.type is pygame.MOUSEMOTION:
+                    keys_dir['x'], keys_dir['y'] = event.pos
             # 调用floor刷新
             state = self.iter.update(self.surface, self.keys, keys_dir)
 

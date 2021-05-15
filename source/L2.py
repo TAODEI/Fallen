@@ -32,7 +32,7 @@ class Level2:
         self.b6 = setup.GRAPHICS['2_6']
         self.b7 = setup.GRAPHICS['2_7']
         self.b8 = setup.GRAPHICS['2_8']
-        self.b9 = setup.GRAPHICS['2.9']
+        self.b9 = setup.GRAPHICS['black']
         self.current_time = pygame.time.get_ticks()
         self.timer = 0
 
@@ -72,13 +72,13 @@ class Level2:
             if self.state == 2:
                 surface.blit(self.b3, surface.get_rect())
                 self.state += 1
-            elif self.state == 3 and dir['x'] < 280 and dir['y'] > 100 and dir['y'] < 340:
+            elif self.state == 3 and dir['x'] < 280 and 340 > dir['y'] > 100:
                 surface.blit(self.b4, surface.get_rect())
                 self.state += 1
             elif self.state == 4:
                 surface.blit(self.b5, surface.get_rect())
                 self.state += 1
-            elif self.state == 5 and dir['x'] > 80 and dir['x'] < 200 and dir['y'] > 200 and dir['y'] < 400:
+            elif self.state == 5 and 200 > dir['x'] > 80 and 400 > dir['y'] > 200:
                 surface.blit(self.b6, surface.get_rect())
                 self.state += 1
             elif self.state == 6:
@@ -86,9 +86,9 @@ class Level2:
                 self.state += 1
                 self.timer = pygame.time.get_ticks()
         if self.state == 7:
-            if pygame.time.get_ticks() - self.timer > 2000 and pygame.time.get_ticks() - self.timer < 4000:
+            if 4000 > pygame.time.get_ticks() - self.timer > 2000:
                 surface.blit(self.b8, surface.get_rect())
-            if pygame.time.get_ticks() - self.timer > 4000 and pygame.time.get_ticks() - self.timer < 6000:
+            if 6000 > pygame.time.get_ticks() - self.timer > 4000:
                 surface.blit(self.b9, surface.get_rect())
                 return True
         return False
