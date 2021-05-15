@@ -1,5 +1,4 @@
 import pygame
-import os
 from . import setup
 
 
@@ -19,6 +18,7 @@ class GameEngine:
         while True:
             # 检测是否点击关闭
             keys_dir = {}
+            keys_dir['x'], keys_dir['y'] = 0, 0
             for event in pygame.event.get():
                 # 点X
                 if event.type is pygame.QUIT or (event.type is pygame.KEYDOWN and event.key is pygame.K_q):
