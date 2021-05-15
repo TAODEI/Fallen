@@ -1,11 +1,14 @@
-from source import tools, setup
-from source import main_menu
+import pygame
+
+from source import setup
+from source.Game_Engine import GameEngine
+from source.L0 import L0
+
+floors = [L0()]
 
 
 def main():
-
-    game = tools.Game(main_menu.MainMenu())
+    game = GameEngine(floors)
     game.run()
-
 
 main()

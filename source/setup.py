@@ -2,10 +2,7 @@ import pygame
 from . import tools
 
 
-pygame.init()
-SCREEN = pygame.display.set_mode((int(1536/3), int(2048/3)))
-pygame.display.set_caption("Fallen")
+WINDOW_WIDTH = int(1536 / 2)
+WINDOW_HEIGHT = int(2048 / 2)
 
 GRAPHICS = tools.load_graphics('resources/Fallen')
-def __init__():
-    pass
