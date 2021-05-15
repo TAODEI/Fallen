@@ -22,9 +22,12 @@ class GameEngine:
                 if event.type is pygame.QUIT or (event.type is pygame.KEYDOWN and event.key is pygame.K_q):
                     pygame.display.quit()
                     quit()
-
+                elif event.type is pygame.KEYDOWN:
+                    self.keys = pygame.key.get_pressed()
+                elif event.type is pygame.KEYUP:
+                    self.keys = pygame.key.get_pressed()
             # 调用floor刷新
-            state = self.iter.update(self.surface)
+            state = self.iter.update(self.surface, self.keys)
 
             # 刷新界面
             self.update()
