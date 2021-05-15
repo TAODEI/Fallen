@@ -54,7 +54,7 @@ def load_graphics(path, accept=('.jpg', '.png', '.bmp', '.gif')):
             graphics[name] = img
         
     return graphics
-
+'''应该用不上'''
 def get_image(sheet, x, y, width, height, colorkey, scale):
     '''从图片(sheet)获取部分'''
     image = pygame.Surface((width, height))
