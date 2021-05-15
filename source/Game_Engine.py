@@ -36,10 +36,9 @@ class GameEngine:
                     keys_dir['x'], keys_dir['y'] = event.pos
                 elif event.type == pygame.MOUSEBUTTONUP:
                     keys_dir['up'] = True
-                elif event.type is pygame.MOUSEMOTION:
+                elif event.type == pygame.MOUSEMOTION:
                     keys_dir['motion'] = True
                     self.x2, self.y2 = keys_dir['x2'], keys_dir['y2'] = pygame.mouse.get_pos()
-
             # 调用floor刷新
             state = self.iter.update(self.surface, self.keys, keys_dir)
 
