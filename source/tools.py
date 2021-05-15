@@ -18,10 +18,9 @@ def load_graphics(path, accept=('.jpg', '.png', '.bmp', '.gif', '.jpeg')):
                 img = img.convert_alpha()
             else:
                 img = img.convert()
-            graphics[name] = pygame.transform.scale(img, (setup.WINDOW_WIDTH,setup.WINDOW_HEIGHT))
+            graphics[name] = pygame.transform.scale(img, (setup.WINDOW_WIDTH, setup.WINDOW_HEIGHT))
 
     return graphics
-
 
 # '''应该用不上'''
 
