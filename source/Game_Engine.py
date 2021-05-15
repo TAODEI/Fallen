@@ -24,7 +24,7 @@ class GameEngine:
                     quit()
 
             # 调用floor刷新
-            state = self.iter.refresh(self.surface)
+            state = self.iter.update(self.surface)
 
             # 刷新界面
             self.update()

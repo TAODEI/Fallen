@@ -18,7 +18,7 @@ def load_graphics(path, accept=('.jpg', '.png', '.bmp', '.gif')):
                 img = img.convert_alpha()
             else:
                 img = img.convert()
-            graphics[name] = img
+            graphics[name] = pygame.transform.scale(img, (setup.WINDOW_WIDTH,setup.WINDOW_HEIGHT))
 
     return graphics
 
