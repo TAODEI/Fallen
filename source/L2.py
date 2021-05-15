@@ -4,18 +4,19 @@ import pygame
 class Level2:
     def __init__(self):
         #self.timer = pygame.
-        self.background = setup.GRAPHICS['20']
+        self.background = setup.GRAPHICS['2_1']
         self.background_rect = self.background.get_rect()
-        self.background = pygame.transform.scale(self.background, (setup.WINDOW_WIDTH, setup.WINDOW_HEIGHT))
-        self.down = False
+        self.state = 0
         
-        self.background2 = setup.GRAPHICS['21']
-        self.background2 = pygame.transform.scale(self.background2, (setup.WINDOW_WIDTH, setup.WINDOW_HEIGHT))
+        self.background2 = setup.GRAPHICS['2_2']
         # self.current_time = pygame.time.get_ticks()
-    def update(self, surface, keys):
+    def update(self, surface, keys, dir):
+        if 'down' in dir:
+            self.state += 1
+            print(self.state)
         if keys[pygame.K_RIGHT]:
-            self.down = True
-        if self.down:
+            self.state += 1
+        if self.state:
             surface.blit(self.background2, surface.get_rect())
         else:
             surface.blit(self.background, surface.get_rect())

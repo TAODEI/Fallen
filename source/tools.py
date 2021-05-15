@@ -4,7 +4,7 @@ import os
 from source import setup
 
 
-def load_graphics(path, accept=('.jpg', '.png', '.bmp', '.gif')):
+def load_graphics(path, accept=('.jpg', '.png', '.bmp', '.gif', '.jpeg')):
     # 加载图片
     pygame.display.set_mode((setup.WINDOW_WIDTH, setup.WINDOW_HEIGHT))
     graphics = {}
@@ -18,7 +18,7 @@ def load_graphics(path, accept=('.jpg', '.png', '.bmp', '.gif')):
                 img = img.convert_alpha()
             else:
                 img = img.convert()
-            graphics[name] = img
+            graphics[name] = pygame.transform.scale(img, (setup.WINDOW_WIDTH,setup.WINDOW_HEIGHT))
 
     return graphics
 

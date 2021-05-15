@@ -11,23 +11,29 @@ class GameEngine:
         self.floors = floors
         self.clock = pygame.time.Clock()
         self.keys = pygame.key.get_pressed()
+        self.mouse_keys = pygame.mouse.get_pressed()
         self.surface = pygame.display.set_mode((setup.WINDOW_WIDTH, setup.WINDOW_HEIGHT))
         self.iter = floors[0]
 
     def run(self):
         while True:
             # 检测是否点击关闭
+            keys_dir = {}
             for event in pygame.event.get():
                 # 点X
                 if event.type is pygame.QUIT or (event.type is pygame.KEYDOWN and event.key is pygame.K_q):
                     pygame.display.quit()
                     quit()
                 elif event.type is pygame.KEYDOWN:
+                    keys_dir.update()
                     self.keys = pygame.key.get_pressed()
                 elif event.type is pygame.KEYUP:
                     self.keys = pygame.key.get_pressed()
+                elif event.type is pygame.MOUSEBUTTONDOWN:
+                    keys_dir['down'] = True
+                    keys_dir['x'], keys_dir['y'] = pygame.mouse.get_pos()
             # 调用floor刷新
-            state = self.iter.update(self.surface, self.keys)
+            state = self.iter.update(self.surface, self.keys, keys_dir)
 
             # 刷新界面
             self.update()
