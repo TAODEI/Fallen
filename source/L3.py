@@ -116,15 +116,15 @@ class L3:
             top = 14.3 / 41.5 * setup.WINDOW_HEIGHT
             bottom = 27.2 / 41.5 * setup.WINDOW_HEIGHT
             target = (9.3 - 4.1) / 31 * setup.WINDOW_WIDTH
-            if 'down' in dic and self.boy_pos + left < dic['d_x'] < right + self.boy_pos and bottom > dic['d_y'] > top:
+            if 'down' in dic and self.boy_pos + left < dic['x'] < right + self.boy_pos and bottom > dic['y'] > top:
                 self.buttondown = True
-                self.oldx = dic['d_x']
+                self.oldx = dic['x']
             if 'up' in dic:
                 self.buttondown = False
             if self.buttondown:
-                if 'motion' in dic and dic['m_x'] > self.oldx:
-                    self.boy_pos += dic['m_x'] - self.oldx
-                    self.oldx = dic['m_x']
+                if 'motion' in dic and dic['x2'] > self.oldx:
+                    self.boy_pos += dic['x2'] - self.oldx
+                    self.oldx = dic['x2']
             if self.boy_pos > target:
                 self.boy_pos = target
                 self.isOK[4] = True
