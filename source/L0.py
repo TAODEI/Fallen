@@ -6,7 +6,7 @@ from source import setup
 
 class L0:
     def __init__(self):
-        self.a = 0
+        pass
 
     def abaaab(surface):
         FPS = 60
