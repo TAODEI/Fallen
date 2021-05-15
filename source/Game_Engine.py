@@ -30,6 +30,7 @@ class GameEngine:
                 elif event.type is pygame.KEYUP:
                     self.keys = pygame.key.get_pressed()
                 elif event.type is pygame.MOUSEBUTTONDOWN:
+                    print(1111)
                     keys_dir['down'] = True
                     keys_dir['x'], keys_dir['y'] = pygame.mouse.get_pos()
             # 调用floor刷新
