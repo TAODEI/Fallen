@@ -11,14 +11,10 @@ class Level2:
         
         self.background2 = setup.GRAPHICS['21']
         self.background2 = pygame.transform.scale(self.background2, (setup.WINDOW_WIDTH, setup.WINDOW_HEIGHT))
-
+        # self.current_time = pygame.time.get_ticks()
     def update(self, surface, keys):
-        for event in pygame.event.get():
-            print(2222222)
-            if event.type is pygame.KEYDOWN:
-               
-                if event.key is pygame.K_a:
-                    self.down = True
+        if keys[pygame.K_RIGHT]:
+            self.down = True
         if self.down:
             surface.blit(self.background2, surface.get_rect())
         else:
