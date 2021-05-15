@@ -3,8 +3,6 @@ import pygame
 
 class Level7:
     def __init__(self):
-        self.ok = True
-        self.state = -1
         self.background = setup.GRAPHICS['7.1']
         self.b2 = setup.GRAPHICS['7.2']
         self.b3 = setup.GRAPHICS['7.3']
@@ -22,7 +20,6 @@ class Level7:
         self.b15 = setup.GRAPHICS['7.15']
         self.b16 = setup.GRAPHICS['7.16']
         self.b17 = setup.GRAPHICS['7.17']
-
 
         self.c1 = pygame.sprite.Sprite()
         self.c1.image = pygame.transform.scale(self.b2, (int(1537 / 2), int(2048 / 2)))
