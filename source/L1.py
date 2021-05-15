@@ -45,11 +45,34 @@ class L1:
         # 一个可以移动的手的画面
         self.Hand = setup.GRAPHICS['1.10']
         #self.Hand = pygame.transform.scale(self.Hand,(200,400))
-        self.Hand_y = int(2048/3)
+        self.Hand_y = 400
+        self.Hand_x = 120
         # 手的移动速度
         self.Hand_speed = 3
         # 判断while监听进行的标志
-        self.flag = True
+        self.is_move = False
+        self.old_x = 0
+        self.old_y = 0
+        self.new_x = 0
+        self.old_y = 0
+        self.Paper = setup.GRAPHICS['1.4']
+        #画笔
+        self.Hand2 = setup.GRAPHICS['1.5']
+        self.Hand2_x = 0
+        self.Hand2_y = 0
+        self.old1_x = 0
+        self.old1_y = 0
+        self.new1_x = 0
+        self.new1_y = 0
+
+        #four picture
+        self.Picture_1 = setup.GRAPHICS['1.0']
+        #self.Picture_2 = setup.GRAPHICS['1.1']
+        self.Picture_3 = setup.GRAPHICS['1.2']
+        self.Picture_4 = setup.GRAPHICS['1.3']
+        self.num = 0
+
+        self.flag = False
 
     def update(self, surface: Surface,keys,dir):
         if pygame.time.get_ticks() - self.timer < 2000:
@@ -92,15 +115,61 @@ class L1:
         #    surface.blit(self.HandBack,surface.get_rect())
             #print(self.Hand_y)
             
-        #    self.Hand_y -= self.Hand_speed  
-        while self.flag:
-            surface.blit(self.Hand, (120, self.Hand_y))
-            for event in pygame.event.get():
-                if event.type == pygame.MOUSEBUTTONDOWN: # 获取点击鼠标事件
-                    if event.button == 1: # 点击鼠标左键
-                        self.moving = True
-                if event.type == pygame.MOUSEBUTTONUP: # 获取松开鼠标事件
-                    if event.button == 1: # 松开鼠标左键
-                        self.moving = False
-            if self.moving:
-                self.position = pygame.mouse.get_pos() # 更新圆心位置为鼠标当前位置
+        #    self.Hand_y -= self.Hand_speed
+        if pygame.time.get_ticks() - self.timer >= 6000:
+            surface.blit(self.HandBack,surface.get_rect())
+            surface.blit(self.Hand, (self.Hand_x, self.Hand_y))
+            if 'down' in dir:
+                self.is_move = True
+                self.old_x = dir['x']
+                self.old_y = dir['y']
+            if 'up' in dir:
+                self.is_move = False
+            if self.is_move == True:
+                self.new_x = dir['x2']
+                self.new_y = dir['y2']
+                self.Hand_x += (self.new_x - self.old_x)
+                self.Hand_y += (self.new_y - self.old_y)
+                #print(self.old_y)
+                #print(self.new_y)
+                #print(self.new_x - self.old_x)
+                #print(self.new_y - self.old_y)
+                self.old_x = self.new_x
+                self.old_y = self.new_y
+            surface.blit(self.Hand,(self.Hand_x,self.Hand_y))
+            if(self.Hand_x <= 100 and self.Hand_y <= 100):
+                self.flag = True
+
+        if self.flag:
+            surface.blit(self.Paper, surface.get_rect())
+            surface.blit(self.Hand2,(self.Hand2_x,self.Hand2_y))
+            if 'down' in dir:
+                self.is_move = True
+                self.old1_x = dir['x']
+                self.old1_y = dir['y']
+            if 'up' in dir:
+                self.is_move = False
+            if self.is_move == True:
+                self.new1_x = dir['x2']          
+                self.new1_y = dir['y2']
+                self.Hand2_x += (self.new1_x - self.old1_x)
+                self.Hand2_y += (self.new1_y - self.old1_y)
+                if abs(self.new1_x - self.old1_x) > 100:
+                    self.num += 1
+                self.old1_x = self.new1_x
+                self.old1_y = self.new1_y
+            if self.num == 0:
+                surface.blit(self.Paper,surface.get_rect())
+                surface.blit(self.Hand2,(self.Hand2_x,self.Hand2_y))
+            if self.num == 1:
+                surface.blit(self.Picture_1,surface.get_rect())
+                surface.blit(self.Hand2,(self.Hand2_x,self.Hand2_y))
+                #if self.num == 2:
+                #    surface.blit(self.Picture_2, surface.get_rect())
+                #    surface.blit(self.Hand2,(self.Hand2_x,self.Hand2_y))
+            if self.num == 2:
+                surface.blit(self.Picture_3, surface.get_rect())
+                surface.blit(self.Hand2,(self.Hand2_x,self.Hand2_y))
+            if self.num >= 3:
+                surface.blit(self.Picture_4,surface.get_rect())
+                surface.blit(self.Hand2,(self.Hand2_x,self.Hand2_y))
