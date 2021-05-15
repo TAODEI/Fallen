@@ -1,5 +1,5 @@
 from source import tools, setup
-from source.states import main_menu
+from source import main_menu
 
 def main():
     state_dict = {

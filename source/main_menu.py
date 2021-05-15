@@ -1,5 +1,5 @@
 import pygame
-from .. import tools, setup
+from . import tools, setup
 class MainMenu:
     def __init__(self):
 
