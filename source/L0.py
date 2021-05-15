@@ -1,3 +1,4 @@
+import cv2
 import pygame
 from pygame.surface import Surface
 
@@ -6,34 +7,42 @@ from source import setup
 
 class L0:
     def __init__(self):
-        pass
+        self.next = False
+        self.success = True
+        self.video_resource = cv2.VideoCapture("resources/Fallen/movie.mp4")
+        self.count = 0
+        self.width = int(self.video_resource.get(cv2.CAP_PROP_FRAME_WIDTH))
+        self.height = int(self.video_resource.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        self.time_count = 0
+        self.play_video = True
+        self.alpha = 0
+        self.add_alpha = 1
+        self.title = setup.GRAPHICS['Title']
 
-    def abaaab(surface):
-        FPS = 60
-        clock = pygame.time.Clock()
-        movie = pygame.movie.Movie('resources/Fallen/movie.mp4')
-        screen = pygame.display.set_mode(movie.get_size())
-        movie_screen = pygame.Surface(movie.get_size()).convert()
+    def video2frame(self):
 
-        movie.set_display(movie_screen)
-        movie.play()
+        # 按帧读取视频
+        self.success, image = self.video_resource.read()
+        self.count += 1
+        if self.success:
+            img = pygame.image.frombuffer(image.tostring(), (self.width, self.height), "RGB")
+            self.success, image = self.video_resource.read()
+            return img
+        else:
+            self.play_video = False
+            return None
 
-        playing = True
-        while playing:
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    movie.stop()
-                    playing = False
-
-            screen.blit(movie_screen, (0, 0))
-            pygame.display.update()
-            clock.tick(FPS)
-
-        pygame.quit()
-
-    def refresh(self, surface: Surface) -> object:
-        background = setup.GRAPHICS['18']
-        background = pygame.transform.scale(background, (setup.WINDOW_WIDTH, setup.WINDOW_HEIGHT))
-        surface.blit(background, surface.get_rect())
-
+    def update(self, surface: Surface) -> object:
+        self.time_count += 1
+        if self.play_video:
+            if self.time_count % 7 == 0:
+                self.time_count = 0
+                frame = self.video2frame()
+                if frame is not None:
+                    background = pygame.transform.scale(frame, (setup.WINDOW_WIDTH, setup.WINDOW_HEIGHT))
+                    surface.blit(background, surface.get_rect())
+        elif self.time_count % 7 == 0:
+            self.title.set_alpha(self.alpha)
+            self.alpha += self.add_alpha
+            surface.blit(self.title, surface.get_rect())
         return None
