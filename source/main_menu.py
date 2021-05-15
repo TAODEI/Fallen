@@ -8,10 +8,10 @@ class MainMenu:
         self.finished = False
 
     def setup_background(self):
-        self.background = setup.GRAPHICS['1']
+        self.background = setup.GRAPHICS['19']
         self.background_rect = self.background.get_rect()
-        self.background = pygame.transform.scale(self.background, (int(self.background_rect.width * 2.68),
-                                                                    int(self.background_rect.height * 2.68)))
+        self.background = pygame.transform.scale(self.background, (int(self.background_rect.width / 3),
+                                                                    int(self.background_rect.height / 3)))
         self.viewport = setup.SCREEN.get_rect()
 
 
