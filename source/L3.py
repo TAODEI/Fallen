@@ -30,14 +30,15 @@ class L3:
         # 掉落速度
         self.fall_v = 15
         # 各阶段结束控制
-        self.isOK = [True, True, True, False, False]
+        self.isOK = [False, False, False, False, False, False, False, False, False, False, False, False]
         # 云的不透明度
         self.cloud_index = 0
         self.cloud_alpha = 255
         self.add_cloud_alpha = -8
-        self.last_dict = {}
         self.boy_pos = 0
         self.boy = setup.GRAPHICS['3_5']
+        self.buttondown = False
+        self.oldx = 10000
 
     def update(self, surface: Surface, keys, dic) -> object:
         self.time_count += 1
@@ -103,7 +104,7 @@ class L3:
                 surface.blit(self.background, surface.get_rect())
         # 变为好几个人
         elif not self.isOK[3]:
-            if self.time_count > 200:
+            if self.time_count > 200 and 'down' in dic:
                 self.time_count = 0
                 self.isOK[3] = True
                 self.background = setup.GRAPHICS['3_4']
@@ -115,19 +116,58 @@ class L3:
             top = 14.3 / 41.5 * setup.WINDOW_HEIGHT
             bottom = 27.2 / 41.5 * setup.WINDOW_HEIGHT
             target = (9.3 - 4.1) / 31 * setup.WINDOW_WIDTH
-            if 'down' in self.last_dict and 'down' in dic:
-                if self.boy_pos + left < self.last_dict['x'] < dic['x'] < right + self.boy_pos and bottom > self.dic[
-                    'y'] > top and bottom > self.last_dict['y'] > top:
-                    self.boy_pos = self.boy_pos + dic['x'] - self.last_dict['x']
-                if self.boy_pos > target:
-                    self.boy_pos = target
-                    self.isOK[4] = True
-                    self.time_count = 0
-            self.last_dict = dic
+            if 'down' in dic and self.boy_pos + left < dic['d_x'] < right + self.boy_pos and bottom > dic['d_y'] > top:
+                self.buttondown = True
+                self.oldx = dic['d_x']
+            if 'up' in dic:
+                self.buttondown = False
+            if self.buttondown:
+                if 'motion' in dic and dic['m_x'] > self.oldx:
+                    self.boy_pos += dic['m_x'] - self.oldx
+                    self.oldx = dic['m_x']
+            if self.boy_pos > target:
+                self.boy_pos = target
+                self.isOK[4] = True
+                self.background = setup.GRAPHICS['3.6']
+                self.time_count = 0
 
-            surface.blit(self.background, (self.boy_pos, 0, surface.get_rect().width, surface.get_rect().height))
-            surface.blit(self.boy, surface.get_rect())
+            surface.blit(self.background, surface.get_rect())
+            surface.blit(self.boy, (self.boy_pos, 0, surface.get_rect().width, surface.get_rect().height))
         elif not self.isOK[5]:
-            pass
+            surface.blit(self.background, surface.get_rect())
+            if self.time_count > 200:
+                self.time_count = 0
+                self.isOK[5] = True
+                self.background = setup.GRAPHICS['3.7']
+        elif not self.isOK[6]:
+            surface.blit(self.background, surface.get_rect())
+            if self.time_count > 200:
+                self.time_count = 0
+                self.isOK[6] = True
+                self.background = setup.GRAPHICS['3.8']
+        elif not self.isOK[7]:
+            surface.blit(self.background, surface.get_rect())
+            if self.time_count > 200:
+                self.time_count = 0
+                self.isOK[7] = True
+                self.background = setup.GRAPHICS['3.9']
+        elif not self.isOK[8]:
+            surface.blit(self.background, surface.get_rect())
+            if self.time_count > 200:
+                self.time_count = 0
+                self.isOK[8] = True
+                self.background = setup.GRAPHICS['3.10']
+        elif not self.isOK[9]:
+            surface.blit(self.background, surface.get_rect())
+            if self.time_count > 200:
+                self.time_count = 0
+                self.isOK[9] = True
+                self.background = setup.GRAPHICS['3.11']
+        elif not self.isOK[10]:
+            surface.blit(self.background, surface.get_rect())
+            if self.time_count > 200:
+                self.time_count = 0
+                self.next = True
+                self.isOK[10] = True
 
-        return None
+        return self.next
