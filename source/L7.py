@@ -1,7 +1,7 @@
 from .import setup
 import pygame
 
-class Level7:
+class L7:
     def __init__(self):
         self.background = setup.GRAPHICS['7.1']
         self.b2 = setup.GRAPHICS['7.2']

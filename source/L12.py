@@ -1,7 +1,7 @@
 from .import setup
 import pygame, time
 
-class Level12:
+class L12:
     def __init__(self):
         self.ok = True
         self.state = 25

@@ -1,16 +1,18 @@
-from .import setup
+from . import setup
 import pygame, time
+
 
 # 写一个函数，判断一个点是否在某个范围内
 # 点（x,y）
 # 范围 rect(x,y,w,h)
 def is_in_rect(x, y, rect):
     rx, ry, rw, rh = rect
-    if (rx <= x <= rx+rw) and (ry <= y <= ry+rh):
+    if (rx <= x <= rx + rw) and (ry <= y <= ry + rh):
         return True
     return False
 
-class Level4:
+
+class L4:
     def __init__(self):
         self.ok = True
         self.state = -1
@@ -41,14 +43,16 @@ class Level4:
         self.is_move = False
         self.door = False
         self.dot = 0
+
     def update_cloud(self, dir):
-        w,h = self.cloud.image.get_size()
-        
+        w, h = self.cloud.image.get_size()
+
         if is_in_rect(dir['x2'], dir['y2'], (self.cloud.rect.x, self.cloud.rect.y, w, h)):
-            self.cloud.rect.x = dir['x2'] - w/2 + 180
-            self.cloud.rect.y = dir['x2'] - w/2 + 180
-            #self.cloud.rect.y = dir['y2'] - h/2
-        #print(w, h, self.cloud.rect.x, self.cloud.rect.y)
+            self.cloud.rect.x = dir['x2'] - w / 2 + 180
+            self.cloud.rect.y = dir['x2'] - w / 2 + 180
+            # self.cloud.rect.y = dir['y2'] - h/2
+        # print(w, h, self.cloud.rect.x, self.cloud.rect.y)
+
     def update(self, surface, keys, dir):
         if self.dot > 0:
             if 'down' in dir:
@@ -78,6 +82,7 @@ class Level4:
                 surface.blit(self.b17, surface.get_rect())
             elif self.dot == 12:
                 surface.blit(self.b18, surface.get_rect())
+                return True
         elif self.door:
             if 2000 > pygame.time.get_ticks() - self.timer:
                 surface.blit(self.b4, surface.get_rect())
@@ -89,7 +94,7 @@ class Level4:
                     print(dir['x'], dir['y'])
                     if 367 > dir['x'] > 321 and 185 < dir['y'] < 204:
                         self.dot = 1
-                        #self.timer = pygame.time.get_ticks()
+                        # self.timer = pygame.time.get_ticks()
         elif self.cloud.rect.x > 305:
             if 'down' in dir:
                 print(dir['x'], dir['y'])
@@ -115,4 +120,3 @@ class Level4:
                 surface.blit(self.cloud.image, self.cloud.rect)
                 if self.is_move:
                     self.update_cloud(dir)
-        
