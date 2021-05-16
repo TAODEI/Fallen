@@ -67,12 +67,9 @@ class L12:
         self.ok = True
         self.choice = 0
     def update(self, surface, keys, dir):
-     #   print(self.state)
         if self.state == 0:
             surface.blit(self.background, surface.get_rect())
         if 'down' in dir and self.ok:
-            print(dir['x'], dir['y'])
-
             if 220 > dir['x'] > 160 and 600 > dir['y'] > 530 and self.state >= 27:
                 self.choice = 1
                 self.timer = pygame.time.get_ticks()
@@ -83,8 +80,6 @@ class L12:
                 return
             if not(480 > dir['x'] > 240 and 500 > dir['y'] > 220) and self.state == 8:
                 return
-            if self.choice != 0:
-                print(self.choice)
             self.state += 1
         if self.state == 1:
             surface.blit(self.b1, surface.get_rect())
