@@ -109,6 +109,7 @@ class L5:
         elif not self.isOK[6]:
             if 'down' in dic:
                 self.isOK[6] = True
+                self.next = True
                 self.background = setup.GRAPHICS['5.8']
                 surface.blit(self.background,surface.get_rect())
                 self.time_count = 0
