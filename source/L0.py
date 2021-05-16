@@ -20,7 +20,10 @@ class L0:
         # 循环计数
         self.time_count = 0
         # 是否播放视频
-        self.play_video = True
+        self.play_video = False
+        self.title_has = False
+        self.v = 0
+        self.pos = 0
         # 标题初始不透明度
         self.alpha = 0
         # 标题不透明度每次增量
@@ -51,14 +54,21 @@ class L0:
                     surface.blit(background, surface.get_rect())
 
         # 出现标题
+        elif not self.title_has:
+            if self.time_count % 7 == 0:
+                self.time_count = 0
+                self.title.set_alpha(self.alpha)
+                self.alpha += self.add_alpha
+                surface.blit(self.title, surface.get_rect())
+                if self.title.get_alpha() >= 150:
+                    self.title_has = True
+
         elif self.time_count % 7 == 0:
-            self.time_count = 0
-            self.title.set_alpha(self.alpha)
-            self.alpha += self.add_alpha
-            surface.blit(self.title, surface.get_rect())
+            self.pos += self.v
+            surface.blit(self.title, (0, self.pos))
 
         # 返回值判断（一个延时）
-        if self.alpha == 100 and self.time_count > 300:
+        if self.pos >= setup.WINDOW_HEIGHT and self.time_count > 300:
             return True
         else:
             return False
