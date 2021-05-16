@@ -1,4 +1,5 @@
 #import cv2
+import cv2
 import pygame
 from pygame.surface import Surface, SurfaceType
 
@@ -21,10 +22,13 @@ class L0:
         self.time_count = 0
         # 是否播放视频
         self.play_video = True
+        self.title_has = False
+        self.v = 10
+        self.pos = 0
         # 标题初始不透明度
         self.alpha = 0
         # 标题不透明度每次增量
-        self.add_alpha = 1
+        self.add_alpha = 30
         self.title = setup.GRAPHICS['Title']
 
     def video2frame(self) -> [Surface, SurfaceType]:
@@ -40,6 +44,7 @@ class L0:
             return None
 
     def update(self, surface: Surface, keys, dir) -> object:
+
         self.time_count += 1
         # 播放视频
         if self.play_video:
@@ -51,14 +56,21 @@ class L0:
                     surface.blit(background, surface.get_rect())
 
         # 出现标题
-        elif self.time_count % 7 == 0:
-            self.time_count = 0
-            self.title.set_alpha(self.alpha)
-            self.alpha += self.add_alpha
-            surface.blit(self.title, surface.get_rect())
+        elif not self.title_has:
+            if self.time_count % 7 == 0:
+                self.title.set_alpha(self.alpha)
+                self.alpha += self.add_alpha
+                surface.blit(self.title, surface.get_rect())
+                if self.title.get_alpha() >= 150:
+                    self.time_count = 0
+                    self.title_has = True
+
+        elif self.time_count>100 and  self.time_count % 7 == 0:
+            self.pos += self.v
+            surface.blit(self.title, (0, self.pos))
 
         # 返回值判断（一个延时）
-        if self.alpha == 100 and self.time_count > 300:
+        if self.pos >= setup.WINDOW_HEIGHT and self.time_count > 300:
             return True
         else:
             return False
