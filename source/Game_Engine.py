@@ -6,7 +6,6 @@ class GameEngine:
 
     # 初始化pygame
     def __init__(self, floors):
-        pygame.init()
         self.floors = floors
         self.clock = pygame.time.Clock()
         self.keys = pygame.key.get_pressed()
