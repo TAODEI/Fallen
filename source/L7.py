@@ -1,7 +1,7 @@
 from .import setup
 import pygame
 
-class Level7:
+class L7:
     def __init__(self):
         self.background = setup.GRAPHICS['7.1']
         self.b2 = setup.GRAPHICS['7.2']
@@ -96,6 +96,7 @@ class Level7:
                 surface.blit(self.b15, surface.get_rect())
             elif self.state == 12:
                 surface.blit(self.b16, surface.get_rect())
+                return True
         else:
             if 'down' in dir:
                 self.is_move = True
