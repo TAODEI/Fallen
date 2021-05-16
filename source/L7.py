@@ -96,6 +96,7 @@ class Level7:
                 surface.blit(self.b15, surface.get_rect())
             elif self.state == 12:
                 surface.blit(self.b16, surface.get_rect())
+                return True
         else:
             if 'down' in dir:
                 self.is_move = True
