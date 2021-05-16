@@ -43,6 +43,7 @@ def main():
     ]
     pygame.mixer.music.load("resources/bgm.mp3")
     pygame.mixer.music.set_volume(9)
+
     game = GameEngine(floors)
     game.run()
 
