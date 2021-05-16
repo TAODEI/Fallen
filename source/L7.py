@@ -106,8 +106,6 @@ class L7:
                 self.ok = True
             elif self.c4.rect.x <= -220:
                 if self.is_move:
-                    print(self.c4.rect, 555)
-                    print(dir['x2'], dir['y2'])
                     self.update_c(dir, 5)
                 surface.blit(self.b4, surface.get_rect())
                 surface.blit(self.c5.image, self.c5.rect)
