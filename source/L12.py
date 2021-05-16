@@ -73,10 +73,10 @@ class Level12:
         if 'down' in dir and self.ok:
             print(dir['x'], dir['y'])
 
-            if 220 > dir['x'] > 160 and 600 > dir['y'] > 530 and self.state == 27:
+            if 220 > dir['x'] > 160 and 600 > dir['y'] > 530 and self.state >= 27:
                 self.choice = 1
                 self.timer = pygame.time.get_ticks()
-            if 360 > dir['x'] > 300 and 600 > dir['y'] > 530 and self.state == 27:
+            if 360 > dir['x'] > 300 and 600 > dir['y'] > 530 and self.state >= 27:
                 self.choice = 2
                 self.timer = pygame.time.get_ticks()
             if not(40 < dir['x'] < 260 and 480 > dir['y'] > 330) and self.state == 3:

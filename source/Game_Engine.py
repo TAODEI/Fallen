@@ -18,6 +18,7 @@ class GameEngine:
 
     def run(self):
         while True:
+            
             # 检测是否点击关闭
             keys_dir = {}
             keys_dir['x2'], keys_dir['y2'] = self.x2, self.y2

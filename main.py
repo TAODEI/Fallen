@@ -11,6 +11,11 @@ from source.L1 import L1
 floors = [L12.Level12()]
 
 def main():
+    pygame.mixer.init()
+    pygame.mixer.music.load("resources/lace.mp3")
+    pygame.mixer.music.set_volume(9)
+
+    pygame.mixer.music.play()
     game = GameEngine(floors)
     game.run()
 
