@@ -21,7 +21,7 @@ class L0:
         # 循环计数
         self.time_count = 0
         # 是否播放视频
-        self.play_video = False
+        self.play_video = True
         self.title_has = False
         self.v = 10
         self.pos = 0
