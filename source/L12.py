@@ -4,7 +4,7 @@ import pygame, time
 class L12:
     def __init__(self):
         self.ok = True
-        self.state = 25
+        self.state = 0
         self.background = setup.GRAPHICS['black']
         self.b1 = setup.GRAPHICS['12.1']
         self.b2 = setup.GRAPHICS['12.2']
@@ -102,9 +102,9 @@ class L12:
         elif pygame.time.get_ticks() - self.timer < 2000 and self.timer and self.state == 7:
             self.ok = False
             surface.blit(self.b4, surface.get_rect())
-        elif 2000 < pygame.time.get_ticks() - self.timer < 4000 and self.timer and self.state == 4:
+        elif 2000 < pygame.time.get_ticks() - self.timer < 4000 and self.timer and self.state == 7:
             surface.blit(self.b5, surface.get_rect())
-        elif 4000 < pygame.time.get_ticks() - self.timer < 6000 and self.timer and self.state == 4:
+        elif 4000 < pygame.time.get_ticks() - self.timer < 6000 and self.timer and self.state == 7:
             surface.blit(self.b6, surface.get_rect())
         elif self.state == 7:
             surface.blit(self.b7, surface.get_rect())

@@ -2,7 +2,7 @@ import pygame
 
 from source.Game_Engine import GameEngine
 from source import *
-from source.L0 import L0
+#from source.L0 import L0
 from source.L1 import L1
 from source.L10 import L10
 from source.L11 import L11
@@ -27,18 +27,18 @@ def main():
     pygame.mixer.music.play()
     pygame.init()
     floors = [
-        L0(),
-        L1(),
-        L2(),
-        L3(),
-        L4(),
-        L5(),
-        L6(),
-        L7(),
-        L8(),
-        L9(),
-        L10(),
-        L11(),
+        # L0(),
+        # L1(),
+        # L2(),
+        # L3(),
+        # L4(),
+        # L5(),
+        # L6(),
+        # L7(),
+        # L8(),
+        # L9(),
+        # L10(),
+        # L11(),
         L12()
     ]
     pygame.mixer.music.load("resources/bgm.mp3")
