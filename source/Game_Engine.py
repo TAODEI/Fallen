@@ -13,12 +13,14 @@ class GameEngine:
         self.mouse_keys = pygame.mouse.get_pressed()
         self.surface = pygame.display.set_mode((setup.WINDOW_WIDTH, setup.WINDOW_HEIGHT))
         self.iter = floors[0]
+        self.x2 = 0
+        self.y2 = 0
 
     def run(self):
         while True:
             # 检测是否点击关闭
             keys_dir = {}
-            keys_dir['x'], keys_dir['y'] = 0, 0
+            keys_dir['x2'], keys_dir['y2'] = self.x2, self.y2
             for event in pygame.event.get():
                 # 点X
                 if event.type is pygame.QUIT or (event.type is pygame.KEYDOWN and event.key is pygame.K_q):
@@ -31,13 +33,12 @@ class GameEngine:
                     self.keys = pygame.key.get_pressed()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     keys_dir['down'] = True
-                    keys_dir['x'], keys_dir['y'] = pygame.mouse.get_pos()
-                elif event.type == pygame.MOUSEMOTION:
-                    keys_dir['motion'] = True
-                    keys_dir['x2'], keys_dir['y2'] = pygame.mouse.get_pos()
+                    keys_dir['x'], keys_dir['y'] = event.pos
                 elif event.type == pygame.MOUSEBUTTONUP:
                     keys_dir['up'] = True
-
+                elif event.type == pygame.MOUSEMOTION:
+                    keys_dir['motion'] = True
+                    self.x2, self.y2 = keys_dir['x2'], keys_dir['y2'] = pygame.mouse.get_pos()
             # 调用floor刷新
             state = self.iter.update(self.surface, self.keys, keys_dir)
 

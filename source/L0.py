@@ -1,4 +1,4 @@
-import cv2
+#import cv2
 import pygame
 from pygame.surface import Surface, SurfaceType
 
