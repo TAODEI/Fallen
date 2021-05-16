@@ -17,6 +17,7 @@ class GameEngine:
 
     def run(self):
         while True:
+            
             # 检测是否点击关闭
             keys_dir = {'x2': self.x2, 'y2': self.y2}
             for event in pygame.event.get():
