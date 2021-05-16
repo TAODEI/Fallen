@@ -7,8 +7,9 @@ from source import L2, L4
 #from source.L0 import L0
 from source.L3 import L3
 from source.L1 import L1
+from source.L8 import L8
 
-floors = [L1()]
+floors = [L8()]
 
 def main():
     game = GameEngine(floors)
