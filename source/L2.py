@@ -1,7 +1,8 @@
-from .import setup
+from . import setup
 import pygame, time
 
-class Level2:
+
+class L2:
     def __init__(self):
         self.ok = True
         # 循环计数
@@ -22,7 +23,7 @@ class Level2:
         self.girl_height = -setup.WINDOW_HEIGHT + 200
         # 掉落速度
         self.fall_v = 15
-        #self.timer = pygame.
+        # self.timer = pygame.
         self.state = 2
         self.background = setup.GRAPHICS['2_1']
         self.b2 = setup.GRAPHICS['2_2']
@@ -54,13 +55,14 @@ class Level2:
             else:
                 surface.blit(self.b2, surface.get_rect())
 
-            surface.blit(self.girl, (0, self.girl_height, surface.get_rect().width,  surface.get_rect().height))
+            surface.blit(self.girl, (0, self.girl_height, surface.get_rect().width, surface.get_rect().height))
             surface.blit(cloud, surface.get_rect())
 
             if self.time_count > 500:
                 self.time_count = 0
             if self.girl_height > setup.WINDOW_HEIGHT * 0.6:
                 self.ok = False
+
     def update(self, surface, keys, dir):
         if self.state < 3:
             self.update_cloud_and_girl(surface)
