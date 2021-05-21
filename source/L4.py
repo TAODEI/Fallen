@@ -91,13 +91,11 @@ class L4:
             if pygame.time.get_ticks() - self.timer > 4000:
                 surface.blit(self.b6, surface.get_rect())
                 if 'down' in dir:
-                    print(dir['x'], dir['y'])
                     if 367 > dir['x'] > 321 and 185 < dir['y'] < 204:
                         self.dot = 1
                         # self.timer = pygame.time.get_ticks()
         elif self.cloud.rect.x > 305:
             if 'down' in dir:
-                print(dir['x'], dir['y'])
                 if 270 > dir['x'] > 206 and 282 > dir['y'] > 241:
                     self.door = True
                     self.timer = pygame.time.get_ticks()

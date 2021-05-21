@@ -3,7 +3,6 @@ import os
 
 from source import setup
 
-
 def load_graphics(path, accept=('.jpg', '.png', '.bmp', '.gif', '.jpeg')):
     # 加载图片
     pygame.display.set_mode((setup.WINDOW_WIDTH, setup.WINDOW_HEIGHT))
