@@ -67,9 +67,6 @@ class L2:
         if self.state < 3:
             self.update_cloud_and_girl(surface)
         if 'down' in dir and self.ok == False:
-            print(self.state)
-
-            print(dir['x'], dir['y'])
 
             if self.state == 2:
                 surface.blit(self.b3, surface.get_rect())

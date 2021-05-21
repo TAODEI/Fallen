@@ -65,7 +65,6 @@ class L8:
         if pygame.time.get_ticks() - self.timer > 500:
             if self.count == 0:
                 surface.blit(self.Litter, surface.get_rect())
-                print(self.count)
             if self.count == 1:
                 if 'down' in dir:
                     self.x = dir['x']
@@ -81,7 +80,6 @@ class L8:
                 if 'down' in dir:
                     self.x1 = dir['x']
                     self.y1 = dir['y']
-                    print(self.x1)  
                 if(self.x1 > 128 and self.x1 < 400 and self.y1 > 128 and self.y1 < 480):
                     self.flag1 = True
                 if self.flag1:
@@ -91,7 +89,6 @@ class L8:
         if pygame.time.get_ticks() - self.timer <= 500:
             surface.blit(self.background,surface.get_rect())
         if pygame.time.get_ticks() - self.timer > 500:
-            print(self.count)
             if 'down' in dir:
                 self.x = dir['x']
                 self.y = dir['y']
