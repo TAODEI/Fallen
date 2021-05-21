@@ -21,7 +21,7 @@ from source.L9 import L9
 
 def main():
     pygame.mixer.init()
-    pygame.mixer.music.load("resources/lace.mp3")
+    pygame.mixer.music.load("resources/bgm.mp3")
     pygame.mixer.music.set_volume(9)
 
     pygame.mixer.music.play()
@@ -41,8 +41,6 @@ def main():
         L11(),
         L12()
     ]
-    pygame.mixer.music.load("resources/bgm.mp3")
-    pygame.mixer.music.set_volume(9)
 
     game = GameEngine(floors)
     game.run()
