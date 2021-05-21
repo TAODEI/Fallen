@@ -1,7 +1,6 @@
 import pygame
 
 from source.Game_Engine import GameEngine
-from source import *
 from source.L0 import L0
 from source.L1 import L1
 from source.L10 import L10
@@ -17,8 +16,6 @@ from source.L8 import L8
 from source.L9 import L9
 
 
-
-
 def main():
     pygame.mixer.init()
     pygame.mixer.music.load("resources/lace.mp3")
@@ -26,21 +23,7 @@ def main():
 
     pygame.mixer.music.play()
     pygame.init()
-    floors = [
-        L0(),
-        L1(),
-        L2(),
-        L3(),
-        L4(),
-        L5(),
-        L6(),
-        L7(),
-        L8(),
-        L9(),
-        L10(),
-        L11(),
-        L12()
-    ]
+    floors = [L0(), L1(), L2(), L3(), L4(), L5(), L6(), L7(), L8(), L9(), L10(), L11(), L12()]
 
     game = GameEngine(floors)
     game.run()

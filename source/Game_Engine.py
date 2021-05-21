@@ -1,5 +1,5 @@
 import pygame
-from . import setup
+from . import setup, tools
 
 
 class GameEngine:
@@ -11,6 +11,7 @@ class GameEngine:
         self.keys = pygame.key.get_pressed()
         self.mouse_keys = pygame.mouse.get_pressed()
         self.surface = pygame.display.set_mode((setup.WINDOW_WIDTH, setup.WINDOW_HEIGHT))
+        pygame.display.set_caption('Fallen')
         self.i = 0
         self.x2 = 0
         self.y2 = 0
