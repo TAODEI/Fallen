@@ -18,26 +18,26 @@ from source.L9 import L9
 
 
 def main():
-    pygame.init()
     pygame.display.set_icon(pygame.image.load('resources/Fallen/icon.png'))
     pygame.display.set_caption('Fallen')
 
+    pygame.init()
     setup.GRAPHICS = tools.load_graphics('resources/Fallen')
 
     floors = [
-        L0(),
-        L1(),
-        L2(),
-        L3(),
-        L4(),
-        L5(),
-        L6(),
-        L7(),
-        L8(),
+        # L0(),
+        # L1(),
+        # L2(),
+        # L3(),
+        # L4(),
+        # L5(),
+        # L6(),
+        # L7(),
+        # L8(),
         L9(),
-        L10(),
-        L11(),
-        L12()
+        # L10(),
+        # L11(),
+        # L12()
     ]
 
     game = GameEngine(floors)

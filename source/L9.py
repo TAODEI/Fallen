@@ -21,8 +21,10 @@ class L9:
         self.fall_v = 15
         # 各阶段结束控制
         self.isOK = [False, False, False, False, False, False, False, False, False, False, False, False]
+        self.down = False
         # 云的不透明度
         self.cloud_index = 0
+        self.oldy = 0
         self.boy_left = 4.1 / 31 * setup.WINDOW_WIDTH
         self.cloud_alpha = 255
         self.add_cloud_alpha = -8
@@ -91,8 +93,17 @@ class L9:
         elif not self.isOK[8]:
             self.background = setup.GRAPHICS['9.10']
             self.boy = setup.GRAPHICS['9.11']
-            if self.time_count > 200:
-               self.pos += self.step
+            if 'down' in dic:
+                self.oldy = dic['y']
+                self.down = True
+            if 'up' in dic:
+                self.down = False
+            if self.down and self.pos >0 :
+                if 'motion' in dic:
+                    y = dic['y2'] - self.oldy
+                    if y < 0:
+                        self.pos += y
+                    self.oldy = dic['y2']
             surface.blit(self.background,(0,self.pos-setup.WINDOW_HEIGHT))
             surface.blit(self.boy,(0,self.pos))
             if self.pos <=0:
