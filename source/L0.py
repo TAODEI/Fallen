@@ -11,7 +11,7 @@ from source import setup
 class L0:
     def __init__(self):
         pygame.mixer.init()
-        pygame.mixer.music.load("resources/lace.mp3")
+        pygame.mixer.music.load("resources/bgm.mp3")
         pygame.mixer.music.set_volume(9)
         # 是否进入下一层
         self.next = False
@@ -22,7 +22,7 @@ class L0:
         # 循环计数
         self.time_count = 0
         # 是否播放视频
-        self.play_video = False
+        self.play_video = True
         self.title_has = False
         self.a = 3
         self.v = 0
@@ -55,7 +55,7 @@ class L0:
             self.alpha += self.add_alpha
             surface.blit(setup.GRAPHICS['14.4'],surface.get_rect())
             surface.blit(self.title, surface.get_rect())
-            if self.title.get_alpha() >= 150:
+            if self.title.get_alpha() >= 200:
                 self.time_count = 0
                 self.title_has = True
 

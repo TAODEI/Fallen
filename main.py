@@ -19,7 +19,7 @@ from source.L9 import L9
 
 def main():
     pygame.init()
-
+    pygame.display.set_icon(pygame.image.load('resources/Fallen/icon.png'))
     pygame.display.set_caption('Fallen')
 
     setup.GRAPHICS = tools.load_graphics('resources/Fallen')
