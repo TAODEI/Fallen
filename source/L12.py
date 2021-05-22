@@ -181,6 +181,8 @@ class L12:
                 surface.blit(self.a11, surface.get_rect())
             elif 22000 < pygame.time.get_ticks() - self.timer < 24000:
                 surface.blit(self.a12, surface.get_rect())
+            elif 24000 < pygame.time.get_ticks() - self.timer < 26000:
+                return True
         # 坏
         if self.state >= 27 and self.choice == 1:
             if pygame.time.get_ticks() - self.timer < 2000:
@@ -199,5 +201,7 @@ class L12:
                 surface.blit(self.c7, surface.get_rect())
             elif 14000 < pygame.time.get_ticks() - self.timer < 16000:
                 surface.blit(self.c8, surface.get_rect())
+            elif 16000 < pygame.time.get_ticks() - self.timer < 18000:
+                return True
             
             
