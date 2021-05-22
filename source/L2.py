@@ -62,6 +62,8 @@ class L2:
                 self.time_count = 0
             if self.girl_height > setup.WINDOW_HEIGHT * 0.6:
                 self.ok = False
+                self.state += 1
+                surface.blit(self.b3, surface.get_rect())
 
     def update(self, surface, keys, dir):
         if self.state < 3:

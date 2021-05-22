@@ -127,7 +127,7 @@ class L6:
                 self.buttondown = False
             if self.buttondown:
                 if 'motion' in dic and dic['x2'] > self.oldx:
-                    self.boy_pos += (dic['x2'] - self.oldx) * 1.5
+                    self.boy_pos += (dic['x2'] - self.oldx) * 2
                     self.oldx = dic['x2']
             if self.boy_pos > target:
                 self.boy_pos = target

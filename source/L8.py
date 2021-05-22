@@ -192,4 +192,4 @@ class L8:
                 surface.blit(self.Message7, surface.get_rect())
             if self.count == 18:
                 surface.blit(self.End, surface.get_rect())
-        return self.count>18
+                return True

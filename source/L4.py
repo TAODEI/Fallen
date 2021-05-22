@@ -96,7 +96,7 @@ class L4:
                         # self.timer = pygame.time.get_ticks()
         elif self.cloud.rect.x > 305:
             if 'down' in dir:
-                if 270 > dir['x'] > 206 and 282 > dir['y'] > 241:
+                if 400 > dir['x'] > 300 and 150 < dir['y'] < 250:
                     self.door = True
                     self.timer = pygame.time.get_ticks()
         else:
