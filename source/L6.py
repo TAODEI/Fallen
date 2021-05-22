@@ -35,7 +35,7 @@ class L6:
         self.cloud_index = 0
         self.boy_left = 4.1 / 31 * setup.WINDOW_WIDTH
         self.cloud_alpha = 255
-        self.add_cloud_alpha = -8
+        self.add_cloud_alpha = -12
         self.boy_pos = self.boy_left
         self.boy = setup.GRAPHICS['3_5']
         self.buttondown = False
