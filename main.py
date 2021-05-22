@@ -15,6 +15,7 @@ from source.L6 import L6
 from source.L7 import L7
 from source.L8 import L8
 from source.L9 import L9
+from source.Last import Last
 
 
 def main():
@@ -25,19 +26,20 @@ def main():
     setup.GRAPHICS = tools.load_graphics('resources/Fallen')
 
     floors = [
-        L0(),
-        L1(),
-        L2(),
-        L3(),
-        L4(),
-        L5(),
-        L6(),
-        L7(),
-        L8(),
-        L9(),
-        L10(),
-        L11(),
-        L12()
+        # L0(),
+        # L1(),
+        # L2(),
+        # L3(),
+        # L4(),
+        # L5(),
+        # L6(),
+        # L7(),
+        # L8(),
+        # L9(),
+        # L10(),
+        # L11(),
+        # L12(),
+        Last()
     ]
 
     game = GameEngine(floors)

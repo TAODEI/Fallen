@@ -4,7 +4,7 @@ import pygame
 from moviepy.video.fx.resize import resize
 from pygame.surface import Surface, SurfaceType
 from moviepy.editor import *
-
+from moviepy import decorators
 from source import setup
 
 
