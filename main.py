@@ -16,14 +16,14 @@ from source.L7 import L7
 from source.L8 import L8
 from source.L9 import L9
 
-def main():
-    pygame.mixer.init()
-    pygame.mixer.music.load("resources/bgm.mp3")
-    pygame.mixer.music.set_volume(9)
 
-    pygame.mixer.music.play()
+def main():
     pygame.init()
+
     pygame.display.set_caption('Fallen')
+
+    setup.GRAPHICS = tools.load_graphics('resources/Fallen')
+
     floors = [
         L0(),
         L1(),
@@ -39,7 +39,6 @@ def main():
         L11(),
         L12()
     ]
-
 
     game = GameEngine(floors)
     game.run()

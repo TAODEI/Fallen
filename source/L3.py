@@ -34,7 +34,7 @@ class L3:
         # 云的不透明度
         self.cloud_index = 0
         self.cloud_alpha = 255
-        self.add_cloud_alpha = -8
+        self.add_cloud_alpha = -12
         self.boy_pos = 0
         self.boy = setup.GRAPHICS['3_5']
         self.buttondown = False
