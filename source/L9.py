@@ -102,7 +102,7 @@ class L9:
                 if 'motion' in dic:
                     y = dic['y2'] - self.oldy
                     if y < 0:
-                        self.pos += y
+                        self.pos += y * 2
                     self.oldy = dic['y2']
             surface.blit(self.background,(0,self.pos-setup.WINDOW_HEIGHT))
             surface.blit(self.boy,(0,self.pos))

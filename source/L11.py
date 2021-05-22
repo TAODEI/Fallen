@@ -34,12 +34,13 @@ class L11:
         self.cloud_index = 0
         self.boy_left = 4.1 / 31 * setup.WINDOW_WIDTH
         self.cloud_alpha = 255
-        self.add_cloud_alpha = -8
+        self.add_cloud_alpha = -12
         self.pos = 200
         self.boy = setup.GRAPHICS['3_5']
         self.buttondown = False
         self.oldx = 10000
         self.v = -5
+        self.down = False
 
     def update(self, surface: Surface, keys, dic) -> object:
         self.time_count += 1
@@ -100,16 +101,25 @@ class L11:
 
         # 变为指定图像 + 伸手
         elif not self.isOK[2]:
-            if self.time_count % 7 == 0:
-                self.pos += self.v
+            if 'down' in dic:
+                self.oldx = dic['x']
+                self.down = True
+            if 'up' in dic:
+                self.down = False
+            if self.down and self.pos > 0:
+                if 'motion' in dic:
+                    x = dic['x2'] - self.oldx
+                    if x < 0:
+                        self.pos += x * 2
+                    self.oldx = dic['x2']
 
-                if self.pos < 0:
-                    self.pos = 0
-                    self.time_count = 0
-                    self.isOK[2] = True
-                    self.background = setup.GRAPHICS['11.4']
-                surface.blit(self.background, surface.get_rect())
-                surface.blit(self.hand, (self.pos, 0))
+            if self.pos < 0:
+                self.pos = 0
+                self.time_count = 0
+                self.isOK[2] = True
+                self.background = setup.GRAPHICS['11.4']
+            surface.blit(self.background, surface.get_rect())
+            surface.blit(self.hand, (self.pos, 0))
         # 点击打手
         elif not self.isOK[3]:
             left = 4.9 / 31 * setup.WINDOW_WIDTH
