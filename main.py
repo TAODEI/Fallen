@@ -15,21 +15,20 @@ from source.L6 import L6
 from source.L7 import L7
 from source.L8 import L8
 from source.L9 import L9
-from source.Last import Last
-
 
 def main():
-    pygame.display.set_icon(pygame.image.load('resources/Fallen/icon.png'))
-    pygame.display.set_caption('Fallen')
+    pygame.mixer.init()
+    pygame.mixer.music.load("resources/bgm.mp3")
+    pygame.mixer.music.set_volume(9)
 
+    pygame.mixer.music.play()
     pygame.init()
-    setup.GRAPHICS = tools.load_graphics('resources/Fallen')
-
+    pygame.display.set_caption('Fallen')
     floors = [
-        L0(),
-        L1(),
-        L2(),
-        L3(),
+        # L0(),
+        # L1(),
+        # L2(),
+        # L3(),
         L4(),
         L5(),
         L6(),
@@ -38,9 +37,9 @@ def main():
         L9(),
         L10(),
         L11(),
-        L12(),
-        Last()
+        L12()
     ]
+
 
     game = GameEngine(floors)
     game.run()
