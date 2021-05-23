@@ -56,7 +56,7 @@ class L4:
     def update(self, surface, keys, dir):
         if self.dot > 0:
             if 'down' in dir:
-                if 367 > dir['x'] > 321 and 185 < dir['y'] < 204 or self.dot >= 4:
+                if 397 > dir['x'] > 301 and 155 < dir['y'] < 254 or self.dot >= 4:
                     self.dot += 1
             if self.dot == 1:
                 surface.blit(self.b7, surface.get_rect())
@@ -91,12 +91,11 @@ class L4:
             if pygame.time.get_ticks() - self.timer > 4000:
                 surface.blit(self.b6, surface.get_rect())
                 if 'down' in dir:
-                    if 367 > dir['x'] > 321 and 185 < dir['y'] < 204:
+                    if 397 > dir['x'] > 301 and 155 < dir['y'] < 254:
                         self.dot = 1
-                        # self.timer = pygame.time.get_ticks()
         elif self.cloud.rect.x > 305:
             if 'down' in dir:
-                if 400 > dir['x'] > 300 and 150 < dir['y'] < 250:
+                if 300 > dir['x'] > 200 and 230 < dir['y'] < 290:
                     self.door = True
                     self.timer = pygame.time.get_ticks()
         else:
