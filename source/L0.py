@@ -44,6 +44,7 @@ class L0:
         # 播放视频
         if self.play_video:
             pygame.mixer.music.load('resources/bgm.mp3')
+            surface.blit(setup.GRAPHICS['14.4'],surface.get_rect())
             pygame.mixer.music.play(-1)
             self.clip.preview()
             self.play_video = False
