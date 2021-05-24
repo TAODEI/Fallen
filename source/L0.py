@@ -36,16 +36,15 @@ class L0:
         self.FPS = 30
         video = VideoFileClip(self.video_resource)
 
-        self.clip = resize(video, width=setup.WINDOW_WIDTH).subclip()
+        self.clip = resize(video, width=setup.WINDOW_WIDTH).subclip().without_audio()
 
     def update(self, surface: Surface, keys, dir) -> object:
         self.clock.tick(self.FPS)
-        # if not pygame.mixer.music.get_busy():
-        #     pygame.mixer.music.play()
-        # 声音听不到，下课再说
         self.time_count += 1
         # 播放视频
         if self.play_video:
+            pygame.mixer.music.load('resources/bgm.mp3')
+            pygame.mixer.music.play(-1)
             self.clip.preview()
             self.play_video = False
 
