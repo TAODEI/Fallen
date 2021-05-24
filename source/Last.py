@@ -13,7 +13,7 @@ class Last:
         # 是否进入下一层
         self.next = False
         # 各阶段结束控制
-        self.isOK = [ True,True,True,True,True, False, False, False, False,  False, False, False, False, False, False, False]
+        self.isOK = [False, False, False, False,  False, False, False, False, False, False, False]
         self.v = 8
         self.add = self.v
         self.alpha = 0
