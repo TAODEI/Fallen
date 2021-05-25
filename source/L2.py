@@ -24,6 +24,13 @@ class L2:
         # 掉落速度
         self.fall_v = 15
         # self.timer = pygame.
+
+
+        # 云的不透明度
+        self.cloud_index = 0
+        self.cloud_alpha = 255
+        self.add_cloud_alpha = -12
+
         self.state = 2
         self.background = setup.GRAPHICS['2_1']
         self.b2 = setup.GRAPHICS['2_2']
@@ -36,39 +43,73 @@ class L2:
         self.b9 = setup.GRAPHICS['black']
         self.current_time = pygame.time.get_ticks()
         self.timer = 0
+    # 旧方法
+    # def update_cloud_and_girl(self, surface: pygame.Surface):
+    #     self.time_count += 1
+    #
+    #     # 云和掉的人
+    #     if self.time_count % 7 == 0:
+    #         # 换云,掉人
+    #         self.girl_height += self.fall_v
+    #         cloud = self.clouds[int(self.time_count / 150) % 3]
+    #         cloud.set_alpha(self.alpha)
+    #         self.background.set_alpha(self.alpha * 2)
+    #         self.alpha += self.add_alpha
+    #         if self.alpha == 200:
+    #             self.add_alpha = 0
+    #         if self.ok:
+    #             surface.blit(self.background, surface.get_rect())
+    #         else:
+    #             surface.blit(self.b2, surface.get_rect())
+    #
+    #         surface.blit(self.girl, (0, self.girl_height, surface.get_rect().width, surface.get_rect().height))
+    #         surface.blit(cloud, surface.get_rect())
+    #
+    #         if self.time_count > 500:
+    #             self.time_count = 0
+    #         if self.girl_height > setup.WINDOW_HEIGHT * 0.6:
+    #             self.ok = False
+    #             self.state += 1
+    #             surface.blit(self.b3, surface.get_rect())
 
-    def update_cloud_and_girl(self, surface: pygame.Surface):
+    def update_cloud(self, surface: pygame.Surface):
         self.time_count += 1
 
-        # 云和掉的人
         if self.time_count % 7 == 0:
-            # 换云,掉人
+
             self.girl_height += self.fall_v
-            cloud = self.clouds[int(self.time_count / 150) % 3]
-            cloud.set_alpha(self.alpha)
+
+            self.cloud_alpha += self.add_cloud_alpha
+            cloud_now = self.clouds[self.cloud_index]
+            cloud_next = self.clouds[(self.cloud_index + 1) % 3]
+            cloud_now.set_alpha(int(self.alpha * self.cloud_alpha / 255))
+            cloud_next.set_alpha(int(self.alpha * (1 - self.cloud_alpha / 255)))
+
             self.background.set_alpha(self.alpha * 2)
             self.alpha += self.add_alpha
-            if self.alpha == 200:
+            if self.alpha > 255:
                 self.add_alpha = 0
-            if self.ok:
-                surface.blit(self.background, surface.get_rect())
-            else:
-                surface.blit(self.b2, surface.get_rect())
 
+            surface.blit(self.background, surface.get_rect())
             surface.blit(self.girl, (0, self.girl_height, surface.get_rect().width, surface.get_rect().height))
-            surface.blit(cloud, surface.get_rect())
+            surface.blit(cloud_next, surface.get_rect())
+            surface.blit(cloud_now, surface.get_rect())
 
-            if self.time_count > 500:
-                self.time_count = 0
             if self.girl_height > setup.WINDOW_HEIGHT * 0.6:
                 self.ok = False
                 self.state += 1
                 surface.blit(self.b3, surface.get_rect())
 
+            if self.time_count > 1000:
+                self.time_count = 0
+            if self.cloud_alpha < 0:
+                self.cloud_alpha = 255
+                self.cloud_index = (self.cloud_index + 1) % 3
+
     def update(self, surface, keys, dir):
         if self.state < 3:
-            self.update_cloud_and_girl(surface)
-        if 'down' in dir and self.ok == False:
+            self.update_cloud(surface)
+        if 'down' in dir and self.ok is False:
 
             if self.state == 2:
                 surface.blit(self.b3, surface.get_rect())

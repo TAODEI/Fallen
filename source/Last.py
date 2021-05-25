@@ -128,19 +128,19 @@ class Last:
             if self.alpha < 250:
                 self.alpha += self.add
                 self.count = 0
-            else:
-                if self.pos < setup.WINDOW_HEIGHT:
-                    self.pos += self.drop
-                else:
-                    self.pos = setup.WINDOW_HEIGHT
-                    self.isOK[6] = True
-                    self.background = setup.GRAPHICS['15.9']
-                    self.add = self.v
-                    self.alpha = 0
+            elif self.count > self.stay * 3:
+                self.add = -self.v
+                self.alpha += self.add
+
+            if self.add == -self.v and self.alpha <= 0:
+                self.add = self.v
+                self.count = 0
+                self.isOK[6] = True
+                self.background = setup.GRAPHICS['15.9']
 
             self.background.set_alpha(self.alpha)
             surface.blit(setup.GRAPHICS['black'], surface.get_rect())
-            surface.blit(self.background, (0, self.pos))
+            surface.blit(self.background, surface.get_rect())
         elif not self.isOK[7]:
 
             if self.alpha < 250:
