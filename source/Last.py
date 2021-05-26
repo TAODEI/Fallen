@@ -128,7 +128,7 @@ class Last:
             if self.alpha < 250:
                 self.alpha += self.add
                 self.count = 0
-            elif self.count > self.stay * 3:
+            elif self.count > self.stay * 2:
                 self.add = -self.v
                 self.alpha += self.add
 
