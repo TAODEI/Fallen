@@ -10,7 +10,7 @@ class L2:
         # 初始不透明度
         self.alpha = 0
         # 标题不透明度每次增量
-        self.add_alpha = 8
+        self.add_alpha = 15
         # 三个云
         self.clouds = [setup.GRAPHICS['cloud.1'],
                        setup.GRAPHICS['cloud.2'],
