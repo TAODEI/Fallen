@@ -107,7 +107,7 @@ class L6:
                 surface.blit(self.boy, (self.boy_left, 0))
         # 消失两个人
         elif not self.isOK[3]:
-            if self.time_count > 200 and 'down' in dic:
+            if 'down' in dic:
                 self.time_count = 0
                 self.isOK[3] = True
                 self.background = setup.GRAPHICS['6.4']
