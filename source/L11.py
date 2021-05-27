@@ -113,11 +113,12 @@ class L11:
                         self.pos += x * 2
                     self.oldx = dic['x2']
 
-            if self.pos < 0:
+            if self.pos <= 0:
                 self.pos = 0
                 self.time_count = 0
-                self.isOK[2] = True
-                self.background = setup.GRAPHICS['11.4']
+                if 'down' in dic:
+                    self.isOK[2] = True
+                    self.background = setup.GRAPHICS['11.4']
             surface.blit(self.background, surface.get_rect())
             surface.blit(self.hand, (self.pos, 0))
         # 点击打手

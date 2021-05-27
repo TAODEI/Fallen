@@ -104,7 +104,7 @@ class L3:
                 surface.blit(self.background, surface.get_rect())
         # 变为好几个人
         elif not self.isOK[3]:
-            if self.time_count > 200 and 'down' in dic:
+            if 'down' in dic:
                 self.time_count = 0
                 self.isOK[3] = True
                 self.background = setup.GRAPHICS['3_4']
