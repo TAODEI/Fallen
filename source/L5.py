@@ -44,9 +44,10 @@ class L5:
             if self.cloud_pos < -setup.WINDOW_HEIGHT:
                 self.isOK[0] = True
                 self.time_count = 0
-            self.cloud = pygame.transform.scale(self.cloudsource, (surface.get_rect().width - self.cloud_pos, surface.get_rect().height-self.cloud_pos))
+            self.cloud = pygame.transform.scale(self.cloudsource, (
+            surface.get_rect().width - self.cloud_pos, surface.get_rect().height - self.cloud_pos))
             surface.blit(self.background, surface.get_rect())
-            surface.blit(self.cloud,(self.cloud_pos * 2, -self.cloud_pos))
+            surface.blit(self.cloud, (self.cloud_pos * 2, -self.cloud_pos))
         # 人 + 1
         elif not self.isOK[1]:
             if 'down' in dic:
@@ -77,6 +78,7 @@ class L5:
             if self.length - self.cloud_pos < 0:
                 self.isOK[3] = True
                 self.time_count = 0
+                self.cloud_pos = self.length
 
             surface.blit(self.cloud,
                          (0, self.length - self.cloud_pos, surface.get_rect().width, surface.get_rect().height))
@@ -111,7 +113,7 @@ class L5:
                 self.isOK[6] = True
                 self.next = True
                 self.background = setup.GRAPHICS['5.8']
-                surface.blit(self.background,surface.get_rect())
+                surface.blit(self.background, surface.get_rect())
                 self.time_count = 0
 
         return self.next
