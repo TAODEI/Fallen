@@ -1,11 +1,11 @@
 from .import setup
-import pygame
+import pygame, time
 
 class L7:
     def __init__(self):
         self.background = setup.GRAPHICS['7.1']
-        self.b2 = setup.GRAPHICS['7.2']
-        self.b3 = setup.GRAPHICS['7.3']
+        self.b2 = setup.GRAPHICS['7.2.1']
+        self.b3 = setup.GRAPHICS['7.3.1']
         self.b4 = setup.GRAPHICS['7.4']
         self.b5 = setup.GRAPHICS['7.5']
         self.b6 = setup.GRAPHICS['7.6']
@@ -22,14 +22,18 @@ class L7:
         self.b17 = setup.GRAPHICS['7.17']
 
         self.c1 = pygame.sprite.Sprite()
-        self.c1.image = pygame.transform.scale(self.b2, (int(1537 / 2), int(2048 / 2)))
+        #self.c1.image = pygame.transform.scale(self.b2, (int(1537 / 2), int(2048 / 2)))
+        self.c1.image = self.b2
         rect = self.c1.image.get_rect()
-        rect.x, rect.y = -120, -20
+        #rect.x, rect.y = -120, -20
+        rect.x, rect.y = 0, 0
         self.c1.rect = rect
         self.c2 = pygame.sprite.Sprite()
-        self.c2.image = pygame.transform.scale(self.b3, (int(1537 / 2), int(2048 / 2)))
+        self.c2.image = self.b3
+        #self.c2.image = pygame.transform.scale(self.b3, (int(1537 / 2), int(2048 / 2)))
         rect2 = self.c2.image.get_rect()
-        rect2.x, rect2.y = -90, -90
+        #rect2.x, rect2.y = -90, -90
+        rect2.x, rect2.y = 0, 0
         self.c2.rect = rect2
         self.c3 = pygame.sprite.Sprite()
         self.c3.image = self.b5
@@ -115,7 +119,7 @@ class L7:
                 surface.blit(self.b4, surface.get_rect())
                 surface.blit(self.b7, surface.get_rect())
                 surface.blit(self.c4.image, self.c4.rect)
-            elif self.c2.rect.x > 250:
+            elif self.c2.rect.x > 430:
                 if self.is_move:
                     self.update_c(dir, 3)
                 surface.blit(self.b4, surface.get_rect())
