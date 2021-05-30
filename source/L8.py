@@ -162,6 +162,10 @@ class L8:
                     surface.blit(self.Picture2, surface.get_rect())
                 if self.num == 3:
                     surface.blit(self.Picture3, surface.get_rect())
+                    self.num += 1
+                    return False
+                if self.num >= 4:
+                    time.sleep(1.5)
                     self.flag1 = True
             if self.count == 4:
                 surface.blit(self.Paper1, surface.get_rect())
