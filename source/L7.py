@@ -23,6 +23,7 @@ class L7:
 
         self.c1 = pygame.sprite.Sprite()
         self.c1.image = pygame.transform.scale(self.b2, (int(1537 / 2.5), int(2048 / 2.5)))
+
         # self.c1.image = self.b2
         rect = self.c1.image.get_rect()
         #rect.x, rect.y = -120, -20
