@@ -22,18 +22,18 @@ class L7:
         self.b17 = setup.GRAPHICS['7.17']
 
         self.c1 = pygame.sprite.Sprite()
-        #self.c1.image = pygame.transform.scale(self.b2, (int(1537 / 2), int(2048 / 2)))
-        self.c1.image = self.b2
+        self.c1.image = pygame.transform.scale(self.b2, (int(1537 / 2.5), int(2048 / 2.5)))
+        # self.c1.image = self.b2
         rect = self.c1.image.get_rect()
         #rect.x, rect.y = -120, -20
-        rect.x, rect.y = 0, 0
+        rect.x, rect.y = 0, -137
         self.c1.rect = rect
         self.c2 = pygame.sprite.Sprite()
-        self.c2.image = self.b3
-        #self.c2.image = pygame.transform.scale(self.b3, (int(1537 / 2), int(2048 / 2)))
+        #self.c2.image = self.b3
+        self.c2.image = pygame.transform.scale(self.b3, (int(rect.width * 1.16), int(rect.height * 1.2)))
         rect2 = self.c2.image.get_rect()
-        #rect2.x, rect2.y = -90, -90
-        rect2.x, rect2.y = 0, 0
+        rect2.x, rect2.y = 0, -130
+        # rect2.x, rect2.y = -300, -100
         self.c2.rect = rect2
         self.c3 = pygame.sprite.Sprite()
         self.c3.image = self.b5
