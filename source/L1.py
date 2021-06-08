@@ -8,6 +8,7 @@ from . import setup
 
 class L1:
     def __init__(self):
+        self.now_time = 0
         self.timer = pygame.time.get_ticks()
         self.inited = True
         # 初始的背景图
@@ -60,7 +61,7 @@ class L1:
         self.b3 = setup.GRAPHICS['1.8']
         # four picture
         self.Picture_1 = setup.GRAPHICS['1.0']
-        # self.Picture_2 = setup.GRAPHICS['1.1']
+        self.Picture_2 = setup.GRAPHICS['1.1']
         self.Picture_3 = setup.GRAPHICS['1.2']
         self.Picture_4 = setup.GRAPHICS['1.3']
         self.num = 0
@@ -99,7 +100,6 @@ class L1:
             cloud_next = self.clouds[(self.cloud_index + 1) % 3]
             cloud_now.set_alpha(int(self.alpha * self.cloud_alpha / 255))
             cloud_next.set_alpha(int(self.alpha * (1 - self.cloud_alpha / 255)))
-
             self.background.set_alpha(self.alpha * 2)
             self.alpha += self.add_alpha
             if self.alpha > 255:
@@ -185,7 +185,8 @@ class L1:
                     self.new1_y = dir['y2']
                     self.Hand2_x += (self.new1_x - self.old1_x)
                     self.Hand2_y += (self.new1_y - self.old1_y)
-                    if abs(self.new1_x - self.old1_x) > 50:
+                    if abs(self.new1_x - self.old1_x) > 50 and pygame.time.get_ticks() - self.now_time > 500:
+                        self.now_time = pygame.time.get_ticks()
                         self.num += 1
                     self.old1_x = self.new1_x
                     self.old1_y = self.new1_y
@@ -198,9 +199,13 @@ class L1:
                     surface.blit(self.Hand2, (self.Hand2_x, self.Hand2_y))
                 if self.num == 2:
                     surface.blit(self.Paper, surface.get_rect())
-                    surface.blit(self.Picture_3, surface.get_rect())
+                    surface.blit(self.Picture_2, surface.get_rect())
                     surface.blit(self.Hand2, (self.Hand2_x, self.Hand2_y))
                 if self.num >= 3:
+                    surface.blit(self.Paper, surface.get_rect())
+                    surface.blit(self.Picture_3, surface.get_rect())
+                    surface.blit(self.Hand2, (self.Hand2_x, self.Hand2_y))
+                if self.num >= 4:
                     surface.blit(self.Paper, surface.get_rect())
                     surface.blit(self.Picture_4, surface.get_rect())
                     if not self.fin:
