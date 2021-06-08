@@ -15,6 +15,7 @@ class L8:
     def setup_background(self):
         # 计时器
         self.timer = 0
+        self.now_time = 0
         # 一个黑屏的开始图片
         self.background = setup.GRAPHICS['8.0']
 
@@ -152,21 +153,23 @@ class L8:
                 if self.is_move == True:
                     self.new_x = dir['x2']
                     self.new_y = dir['y2']
-                    if abs(self.new_x - self.x) > 100:
+                    if abs(self.new_x - self.x) > 50 and pygame.time.get_ticks() - 500 > self.now_time:
+                        self.now_time = pygame.time.get_ticks()
                         self.num += 1
                     self.x = self.new_x
                     self_y = self.new_y
                 if self.num == 1:
                     surface.blit(self.Picture1, surface.get_rect())
-                if self.num == 2:
+                elif self.num == 2:
                     surface.blit(self.Picture2, surface.get_rect())
-                if self.num == 3:
+                elif self.num == 3:
                     surface.blit(self.Picture3, surface.get_rect())
                     self.num += 1
                     return False
-                if self.num >= 4:
-                    time.sleep(1.5)
-                    self.flag1 = True
+                elif self.num >= 4:
+                    surface.blit(self.Picture3, surface.get_rect())
+                    if pygame.time.get_ticks() - 1500 > self.now_time:
+                        self.count += 1
             if self.count == 4:
                 surface.blit(self.Paper1, surface.get_rect())
             if self.count == 5:
